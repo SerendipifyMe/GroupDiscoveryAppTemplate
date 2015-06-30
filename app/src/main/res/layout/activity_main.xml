@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    <![CDATA[ android:text="Create New Group"/>]]>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:weightSum="1">
+
+        <TextView android:text="@string/welcome_title" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_weight="0.16"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center" />
+
+
+        <EditText
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="@string/groupName"
+            android:id="@+id/groupName"
+            android:layout_weight="0.09"
+            android:editable="true"
+            android:layout_gravity="center"
+            android:textIsSelectable="true"
+            android:clickable="true"
+            android:inputType="text" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupButton"
+            android:layout_alignBaseline="@+id/setPrefs"
+            android:layout_alignBottom="@+id/setPrefs"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="Set Group" />
+
+        <ImageView
+            android:layout_width="@dimen/abc_action_bar_stacked_max_height"
+            android:layout_height="@dimen/activity_vertical_margin"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.16"
+            android:contentDescription="emptySpace" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/getPrefs"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="Get Preferences" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/interestsEditText"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.23"
+            android:text="interests" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Preferences"
+            android:id="@+id/setPrefs"
+            android:layout_alignBaseline="@+id/getPrefs"
+            android:layout_alignBottom="@+id/getPrefs"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </LinearLayout>
+    android:text="Get Preferences"/>
+
+</RelativeLayout>
