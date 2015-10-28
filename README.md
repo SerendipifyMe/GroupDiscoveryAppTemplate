@@ -9,14 +9,14 @@ Serendipify.Me is effectively the Match.com for groups of people.
 
 The Serendipify.Me API consists of:
 - group management (performed by the group initiator - identified as wit the "testSession" id
-- - create new group: 
+  - create new group: 
 *http://serendipify.me/api/group?createNewGroup=&groupName=xxx&userGroupSession=testSession*
-- - add user to group
+  - add user to group
 *http://serendipify.me/api/group?addUser=&groupName=xxx&userGroupSession=testSession&userName=testUser&userContact=email@example.com*
 - user matching functionality 
--- read my current matching interests:
+  - read my current matching interests:
 *http://serendipify.me/api/user?getPrefsForGroup=&groupName=xxx&userGroupSession=testSession*
--- set new preferences
+  - set new preferences
 *http://serendipify.me/api/user?setPrefsForGroup=&groupName=xxx&userGroupSession=testSession&&prefList=TESTPREF*
--- get the matching users
+  - get the matching users
 *http://serendipify.me/api/user?getMatchesForGroup=&groupName=xxx&userGroupSession=testSession*
