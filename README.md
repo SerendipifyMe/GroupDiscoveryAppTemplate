@@ -14,12 +14,12 @@ In this repository, we also provide you with a skeleton "Template App" to show y
 #### Details and Implementation Example
 
 The Serendipify.Me API (configured to work with the "test" instance) consists of:
-- group management functionality (performed by the group initiator - identified by the *OWNERSESSION* id)
+- group management functionality (performed by the group initiator)
  - create new group
  - add user to group
 
-- user matching functionality 
- - read my current matching interests:
+- user matching functionality (for your mobine app's users)
+ - read my current matching interests
  - set new preferences
  - get the matching users
 
