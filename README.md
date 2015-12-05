@@ -1,14 +1,18 @@
 
-###Serendipify.Me Group Discover API for Mobile (Android) Integration
+### Serendipify.Me  -  Group Discover API for Mobile (Android) Integration
 
-Use this to develop your own application's modulde that implements the Serendipify.Me API for group search, match, and discovery
+#### Introduction
 
-Serendipify.Me provides you with a very basic but revelant functionality: for any set or subset of users of your application, 
-you can facilitate for them to discover interesting partners through shared interests. 
-Serendipify.Me is effectively the Match.com for groups of people.
+Serendipify.Me is a simple service developed to facilitate private interests matching is transient groups.
+
+YOU WANT THIS for your mobile application if you intend to build a stronger user community, and to enable your users to discover common interests and initiate partnerships and friendships from within your application.
+
+WE make available an API (detailed below) that you can use to develop your own mobile application's modulde (pages) that implements the for group search, matching, and people discovery. Serendipify.Me is effectively the *Match.com* for your user base.
+
+#### Details and Implementation Example
 
 The Serendipify.Me API (configured to work with the "test" instance) consists of:
-- group management (performed by the group initiator - identified as wit the "testSession" id
+- group management (performed by the group initiator - identified by the "testSession" id
   - create new group: 
 *http://test.serendipify.me/api/group?createNewGroup=&groupName=xxx&userGroupSession=testSession*
   - add user to group
@@ -17,6 +21,6 @@ The Serendipify.Me API (configured to work with the "test" instance) consists of
   - read my current matching interests:
 *http://test.serendipify.me/api/user?getPrefsForGroup=&groupName=xxx&userGroupSession=testSession*
   - set new preferences
-*http://test.serendipify.me/api/user?setPrefsForGroup=&groupName=xxx&userGroupSession=testSession&&prefList=TESTPREF*
+*http://localhost:8888/api/user?setPrefsForGroup=&groupName=xxx&userGroupSession=63e8afbb-6357-4e02-9340-a70b6b332a0c&prefList=A,B*
   - get the matching users
 *http://test.serendipify.me/api/user?getMatchesForGroup=&groupName=xxx&userGroupSession=testSession*
