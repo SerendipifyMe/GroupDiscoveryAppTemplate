@@ -13,13 +13,21 @@ In this repository, we also provide you with a skeleton "Template App" to show y
 
 #### Details and Implementation Example
 
-The Serendipify.Me API (configured to work with the "test" instance) consists of:
+The Serendipify.Me API (configured to work with the ["api instance"](http://api-dot-serendipify-me.appspot.com/) consists of:
 - group management functionality (performed by the group initiator)
  - create new group
+ http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=GROUPNAME&groupSession=OWNERSESSION
  - add user to group
+ http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=GROUPNAME&groupSession=OWNERSESSION&userContact=USEREMAIL
+ - assess group activity
+http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION
+
 
 - user matching functionality (for your mobine app's users)
  - read my current matching interests
+ http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION
  - set new preferences
+ http://api-dot-serendipify-me.appspot.com/api/user?setPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION&prefList=Pref-A,Pref-B
  - get the matching users
+http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION
 
