@@ -31,3 +31,7 @@ http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName
  - get the matching users
 http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION
 
+### Developer Console
+To assist you with developing your mobile application against our API, we make available a development console:
+[http://api-dot-serendipify-me.appspot.com/apidevconsole](http://api-dot-serendipify-me.appspot.com/apidevconsole)
+
