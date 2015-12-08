@@ -1,5 +1,5 @@
 
-### Serendipify.Me  -  Group Discover API for Mobile (Android) Integration
+### Serendipify.Me  -  Group Match API for Mobile (Android) apps
 
 #### Introduction
 
