@@ -5,7 +5,7 @@
 
 [Serendipify.Me](http://serendipify.me) is a simple service developed to facilitate private interests matching is transient groups.
 
-**You want this for your mobile application** if you intend to build a stronger user community, and to enable your users to discover common interests and initiate partnerships and friendships from within your application.
+**You want this for your mobile application** if you intend to build a stronger user community, and to enable your users to **discover common interests and initiate partnerships and friendships from within your application**.
 
 WE make available an API (detailed below) that implements the for group search, matching, and people discovery. Serendipify.Me is effectively the *Match.com* for your user base.
 
