@@ -13,6 +13,8 @@ In this repository, we also provide you with a skeleton "Template App" to show y
 
 #### Details and Implementation Example
 
+![SerendipifyMe API Diagram](https://github.com/tibisp/GroupDiscoveryAppTemplate/raw/master/img/SerendipifyMe-API-Diagram.png)
+
 The Serendipify.Me API (configured to work with the ["api instance"](http://api-dot-serendipify-me.appspot.com/) consists of:
 - group management functionality (performed by the group initiator)
  - create new group
