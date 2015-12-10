@@ -1,5 +1,5 @@
 
-### Serendipify.Me  -  Group Discover API for Mobile (Android) Integration
+### Serendipify.Me  -  Group Match API for Mobile (Android) apps
 
 #### Introduction
 
@@ -30,4 +30,8 @@ http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName
  http://api-dot-serendipify-me.appspot.com/api/user?setPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION&prefList=Pref-A,Pref-B
  - get the matching users
 http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION
+
+### Developer Console
+To assist you with developing your mobile application against our API, we make available a development console:
+[http://api-dot-serendipify-me.appspot.com/apidevconsole](http://api-dot-serendipify-me.appspot.com/apidevconsole)
 
