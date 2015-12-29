@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GroupDiscoveryAppTemplate.iml" filepath="$PROJECT_DIR$/GroupDiscoveryAppTemplate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file:///media/janka/6f66bf63-1e90-4c1a-88ce-6c66a85fdee31/janka/spolocne/develop/GroupDiscoveryAppTemplate/app/app.iml" filepath="/media/janka/6f66bf63-1e90-4c1a-88ce-6c66a85fdee31/janka/spolocne/develop/GroupDiscoveryAppTemplate/app/app.iml" />
     </modules>
   </component>
 </project>

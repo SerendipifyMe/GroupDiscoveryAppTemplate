@@ -43,7 +43,7 @@
             android:layout_alignBottom="@+id/setPrefs"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="Set Group" />
+            android:text="Set Group" android:onClick="onGroupButtonClick"/>
 
         <ImageView
             android:layout_width="@dimen/abc_action_bar_stacked_max_height"
