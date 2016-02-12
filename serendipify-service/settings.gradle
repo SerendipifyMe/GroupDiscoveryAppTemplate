@@ -1,0 +1,4 @@
+rootProject.name = 'serendipify-service'
+include 'serendipify-service-api'
+include 'serendipify-service-httpclient'
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="me.serendipify.httpclient.SerendipifyServiceHttpClientTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-12-31T06:30:22" hostname="janka" time="0.684">
+  <properties/>
+  <testcase name="testThatCreateGroupWorks" classname="me.serendipify.httpclient.SerendipifyServiceHttpClientTest" time="0.684"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[686 [Test worker] INFO me.serendipify.httpclient.SerendipifyServiceHttpClientTest - New session id is 72714a11-b4aa-4cf0-9897-893a42c1b20e
+]]></system-err>
+</testsuite>
