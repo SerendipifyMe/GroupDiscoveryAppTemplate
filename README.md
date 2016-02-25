@@ -19,27 +19,27 @@ The Serendipify.Me API (configured to work with the ["api instance"](http://api-
 - group management functionality (performed by the group initiator)
  - create new group 
    - (OWNEREMAIL receives further directions, call RETURNS new group session OWNERSESSION)
-    - http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=GROUPNAME&groupOwnerEmail=OWNEREMAIL
+    - http://serendipify.me/api/group?createNewGroup=&groupName=GROUPNAME&groupOwnerEmail=OWNEREMAIL
  - add user to group 
    - (USEREMAIL receives successful connection requests from other users, call RETURNS USERSESSION)
-    - http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=GROUPNAME&groupSession=OWNERSESSION&userContact=USEREMAIL
+    - http://serendipify.me/api/group?addUser=&groupName=GROUPNAME&groupSession=OWNERSESSION&userContact=USEREMAIL
  - assess group activity 
    - (call RETURNS group information: user count, etc)
-    - http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION
+    - http://serendipify.me/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION
 
 
 - user matching functionality (for your mobine app's users)
  - read my current matching interests 
    - (call RETURNS the user's current listed interests)
-    - http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION
+    - http://serendipify.me/api/user?getPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION
  - set new preferences 
    - (call RETURNS the same USERSESSION)
-    - http://api-dot-serendipify-me.appspot.com/api/user?setPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION&prefList=Pref-A,Pref-B
+    - http://serendipify.me/api/user?setPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION&prefList=Pref-A,Pref-B
  - get the matching users 
    - (call RETURNS, for each recorded interest, a list of  MATCHING USERs' targetContact)
-    - http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION
+    - http://serendipify.me/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION
 
 ### Developer Console
 To assist you with developing your mobile application against our API, we make available a development console:
- - [http://api-dot-serendipify-me.appspot.com/apidevconsole](http://api-dot-serendipify-me.appspot.com/apidevconsole)
+ - [http://serendipify.me/api](http://serendipify.me/api)
 
