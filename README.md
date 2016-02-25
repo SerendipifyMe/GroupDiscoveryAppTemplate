@@ -45,9 +45,10 @@ The Serendipify.Me API consists of:
     - **RESP:** {"getMatchesForGroup":"OK",  "matches":{"pref-2":["MATCHUSERCONNSTRING1"],"pref-3":["MATCHUSERCONNSTRING2"],"pref-1":["MATCHUSERCONNSTRING3"]}}
  - initiate a connection request using one of the matching user's connection strings 
    - **REQ:** http://serendipify.me/api/user?initiateContact=&groupName=GROUPNAME&userGroupSession=USERSESSION&targetContact=MATCHUSERCONNSTRING1
-   - **RESP:** { "initiateContact":"OK",  "Message":"Contact Request Sent Successfully for common interest "pref-1". You get max 3 messages sent per day." }
+    - **RESP:** { "initiateContact":"OK",  "Message":"Contact Request Sent Successfully for common interest "pref-1". You get max 3 messages sent per day." }
  
-### Developer Console
+
+## The Developer Console
 To assist you with developing your mobile application against our API, we make available a development console:
  - [http://serendipify.me/api](http://serendipify.me/api)
 
