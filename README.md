@@ -18,28 +18,31 @@ In this repository, we also provide you with a skeleton "Template App" to show y
 The Serendipify.Me API consists of:
 - group management functionality (performed by the group initiator)
  - create new group 
-   - (OWNEREMAIL receives further directions, call **returns the new groups' accessKey OWNERSESSION**)
-    - REQ:http://serendipify.me/api/group?createNewGroup=&groupName=GROUPNAME&groupOwnerEmail=OWNEREMAIL
-    - RESP (gives a link to the group analytics information, on success): { "createNewGroup":"OK",  "groupName":"http://serendipify.me/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION"}
+   - OWNEREMAIL receives explanatory email, the call returns the new groups' accessKey OWNERSESSION
+   - **REQ:** http://serendipify.me/api/group?createNewGroup=&groupName=GROUPNAME&groupOwnerEmail=OWNEREMAIL
+   - **RESP:** gives a link to the group analytics information, on success: { "createNewGroup":"OK",  "groupName":"http://serendipify.me/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION"}
  - add user to group 
-   - (USEREMAIL receives successful connection requests from other users, call RETURNS USERSESSION)
-    - REQ: http://serendipify.me/api/group?addUser=&groupName=GROUPNAME&groupSession=OWNERSESSION&userContact=USEREMAIL
-    - RESP: returns the access key USERSESSION: { "addUser":"OK", "userName":"http://serendipify.me/api/user?getPrefsForGroup=&groupName=GROUPNAME&groupSession=USERSESSION}
+   - USEREMAIL needed for users to receive successful connection requests from other users, the call returns a accessKey for the user: USERSESSION
+   - **REQ:** http://serendipify.me/api/group?addUser=&groupName=GROUPNAME&groupSession=OWNERSESSION&userContact=USEREMAIL
+   - **RESP:** gives a link to the users' preferences with the embeded accessKey USERSESSION: { "addUser":"OK", "userName":"http://serendipify.me/api/user?getPrefsForGroup=&groupName=GROUPNAME&groupSession=USERSESSION}
  - assess group activity 
-   - (call RETURNS group information: user count, etc)
-    - http://serendipify.me/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION
-
+   - call RETURNS group information: user count, etc
+   - **REQ**: http://serendipify.me/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION
+   - **RESP**: { "getGroupAnalytics":"OK","userCount":"NNN"}
 
 - user matching functionality (for your mobine app's users)
  - read my current matching interests 
-   - (call RETURNS the user's current listed interests)
-    - http://serendipify.me/api/user?getPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION
+   - call RETURNS the user's current listed interests
+   - **REQ:** http://serendipify.me/api/user?getPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION
+   - **RESP:** { "getPrefsForGroup":"OK ", "prefs": ["pref-1","pref-2","pref-3"]}
  - set new preferences 
-   - (call RETURNS the same USERSESSION)
-    - http://serendipify.me/api/user?setPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION&prefList=Pref-A,Pref-B
+   - call RETURNS a link where the user can find their matches for the current preferences
+   - **REQ**: http://serendipify.me/api/user?setPrefsForGroup=&groupName=GROUPNAME&userSession=USERSESSION&prefList=Pref-A,Pref-B
+   - **RESP:**  { "setPrefsForGroup":"OK", "prefs":"http://serendipify.me/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION"}
  - get the matching users 
-   - (call RETURNS, for each recorded interest, a list of  MATCHING USERs' targetContact)
-    - http://serendipify.me/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION
+   - call RETURNS, for each recorded interest, a list of  MATCHING USERs' CONNECTION STRINGS
+   - **REQ:** http://serendipify.me/api/user?getMatchesForGroup=&groupName=GROUPNAME&userSession=USERSESSION
+   - **RESP:** {"getMatchesForGroup":"OK",  "matches":{"pref-2":["MATCHUSERCONNSTRING1"],"pref-3":["MATCHUSERCONNSTRING2"],"pref-1":["MATCHUSERCONNSTRING3"]}}
 
 ### Developer Console
 To assist you with developing your mobile application against our API, we make available a development console:
