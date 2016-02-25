@@ -15,14 +15,16 @@ In this repository, we also provide you with a skeleton "Template App" to show y
 
 ![SerendipifyMe API Diagram](https://github.com/tibisp/GroupDiscoveryAppTemplate/raw/master/img/SerendipifyMe-API-Diagram.png)
 
-The Serendipify.Me API (configured to work with the ["api instance"](http://api-dot-serendipify-me.appspot.com/) consists of:
+The Serendipify.Me API consists of:
 - group management functionality (performed by the group initiator)
  - create new group 
-   - (OWNEREMAIL receives further directions, call RETURNS new group session OWNERSESSION)
-    - http://serendipify.me/api/group?createNewGroup=&groupName=GROUPNAME&groupOwnerEmail=OWNEREMAIL
+   - (OWNEREMAIL receives further directions, call **returns the new groups' accessKey OWNERSESSION**)
+    - REQ:http://serendipify.me/api/group?createNewGroup=&groupName=GROUPNAME&groupOwnerEmail=OWNEREMAIL
+    - RESP (gives a link to the group analytics information, on success): { "createNewGroup":"OK",  "groupName":"http://serendipify.me/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION"}
  - add user to group 
    - (USEREMAIL receives successful connection requests from other users, call RETURNS USERSESSION)
-    - http://serendipify.me/api/group?addUser=&groupName=GROUPNAME&groupSession=OWNERSESSION&userContact=USEREMAIL
+    - REQ: http://serendipify.me/api/group?addUser=&groupName=GROUPNAME&groupSession=OWNERSESSION&userContact=USEREMAIL
+    - RESP: returns the access key USERSESSION: { "addUser":"OK", "userName":"http://serendipify.me/api/user?getPrefsForGroup=&groupName=GROUPNAME&groupSession=USERSESSION}
  - assess group activity 
    - (call RETURNS group information: user count, etc)
     - http://serendipify.me/api/group?getGroupAnalytics=&groupName=GROUPNAME&groupSession=OWNERSESSION
