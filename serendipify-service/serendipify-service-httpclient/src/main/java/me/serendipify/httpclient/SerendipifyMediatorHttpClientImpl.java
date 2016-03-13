@@ -95,16 +95,15 @@ public class SerendipifyMediatorHttpClientImpl implements SerendipifyMediator {
     try {
       String response = executeGET(request);
       Gson gson = new GsonBuilder().create();
-      Object groupAnalyticsResult = gson.fromJson(response, Object.class);
-      if (groupAnalyticsResult instanceof Map) {
-        Map mapResults = (Map) groupAnalyticsResult;
-        LOGGER.info(mapResults.toString());
+      GroupAnalyticsResult groupAnalyticsResult = gson.fromJson(response, GroupAnalyticsResult.class);
+      if (groupAnalyticsResult.isError(groupAnalyticsResult.getGetGroupAnalytics())) {
+        throw new SerendipifyException("Failed to retrieve analytics. Error was " + groupAnalyticsResult.getGetGroupAnalytics());
       }
+      return new Group.Builder().fromGroup(group).userCount(groupAnalyticsResult.getUserCount()).build();
     }
     catch (Exception e) {
       throw new SerendipifyException(e.getMessage());
     }
-    return group;
   }
 
   @Override

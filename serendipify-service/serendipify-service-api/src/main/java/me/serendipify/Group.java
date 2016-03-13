@@ -10,13 +10,16 @@ public class Group {
   private final Boolean owned;
   private final Set<String> preferences;
   private final Set<User> matchingUsers;
+  private final Integer userCount;
 
-  private Group(String name, String session, Boolean owned, Set<String> preferences, Set<User> matchingUsers) {
+  private Group(String name, String session, Boolean owned, Set<String> preferences, Set<User> matchingUsers,
+                Integer userCount) {
     this.name = name;
     this.session = session;
     this.owned = owned;
     this.preferences = preferences;
     this.matchingUsers = matchingUsers;
+    this.userCount = userCount;
   }
 
   /**
@@ -46,9 +49,14 @@ public class Group {
     return owned;
   }
 
-  // TODO: not sure what gets returned
-  public void getAnalytics() {
 
+  /**
+   * Number of users in the group
+   *
+   * @return number of users in the group
+   */
+  public Integer getUserCount() {
+    return userCount;
   }
 
   /**
@@ -74,6 +82,7 @@ public class Group {
     private Boolean owned;
     private Set<String> preferences;
     private Set<User> matchingUsers;
+    private Integer userCount;
 
     public static final Builder getInstance() {
       return new Builder();
@@ -85,6 +94,7 @@ public class Group {
       this.owned = group.owned;
       this.preferences = group.preferences;
       this.matchingUsers = group.matchingUsers;
+      this.userCount = group.userCount;
       return this;
     }
 
@@ -129,8 +139,13 @@ public class Group {
       return this;
     }
 
+    public Builder userCount(Integer userCount) {
+      this.userCount = userCount;
+      return this;
+    }
+
     public Group build() {
-      return new Group(name, session, owned, preferences, matchingUsers);
+      return new Group(name, session, owned, preferences, matchingUsers, userCount);
     }
   }
 }

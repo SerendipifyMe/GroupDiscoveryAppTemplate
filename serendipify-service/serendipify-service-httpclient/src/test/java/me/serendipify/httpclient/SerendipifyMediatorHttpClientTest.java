@@ -20,54 +20,52 @@ import me.serendipify.User;
 
 public class SerendipifyMediatorHttpClientTest {
 
-  private static final String GROUP_ADMIN_EMAIL = "test@test.com";
-  private static final String GROUP_NEW_USER = "test2@test.com";
+  private static final String GROUP_ADMIN_EMAIL = "test@serendipify.me";
   private final Logger LOGGER = LoggerFactory.getLogger(SerendipifyMediatorHttpClientTest.class);
   private SerendipifyMediatorHttpClientImpl service;
   private User admin;
 
   @Before
   public void setUp() throws Exception {
-    this.service = new SerendipifyMediatorHttpClientImpl("http://api-dot-serendipify-me.appspot.com/api/");
+    this.service = new SerendipifyMediatorHttpClientImpl("http://serendipify.me/api/");
     this.admin = new User.Builder().email(GROUP_ADMIN_EMAIL).build();
   }
 
   @Test
-  //@Ignore
   public void testThatCreateGroupWorks() throws Exception {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
     assertNotNull(group);
     LOGGER.info("New session id is {}", group.getSession());
-    Thread.sleep(1000);
-    // fails the second time as the group is already created
     try {
       service.createGroup(randomGroup, admin);
       fail("An exception should have been thrown");
     } catch (SerendipifyException e) {
       // expected
-      LOGGER.info("Exepected failure: {}", e.getMessage());
+      LOGGER.info("Expected failure: {}", e.getMessage());
     }
   }
 
   @Test
   //@Ignore
-  public void testThatAddingAUserWorks() throws Exception {
+  public void testThatAddingAUserWorksAndIsIndempotent() throws Exception {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
-    User newUser = new User.Builder().email(GROUP_NEW_USER).build();
+    User newUser = new User.Builder().email(createNewRandomUser()).build();
     service.addUser(group, newUser);
     service.addUser(group, newUser);
   }
 
   @Test
-  @Ignore("The returned JSON is not valid, this test fails")
   public void testThatRetrieveAnalyticsWorks() throws Exception {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
-    User newUser = new User.Builder().email(GROUP_NEW_USER).build();
+    User newUser = new User.Builder().email(createNewRandomUser()).build();
     service.addUser(group, newUser);
-    service.retrieveGroupAnalytics(group);
+    group = service.retrieveGroupAnalytics(group);
+    Thread.sleep(1000);
+    // FIXME: This fails if there is no sleep above
+    assertEquals(Integer.valueOf(1), group.getUserCount());
   }
 
   @Test
@@ -84,7 +82,7 @@ public class SerendipifyMediatorHttpClientTest {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
     // add user to it
-    User newUser = new User.Builder().email(GROUP_NEW_USER).build();
+    User newUser = new User.Builder().email(createNewRandomUser()).build();
     Group userGroup = service.addUser(group, newUser);
     // set preferences
     Set<String> newPreferences = new HashSet<>();
@@ -101,7 +99,7 @@ public class SerendipifyMediatorHttpClientTest {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
     // add user to it
-    User newUser = new User.Builder().email(GROUP_NEW_USER).build();
+    User newUser = new User.Builder().email(createNewRandomUser()).build();
     Group userGroup = service.addUser(group, newUser);
     // set preferences
     Set<String> newPreferences = new HashSet<>();
@@ -115,4 +113,7 @@ public class SerendipifyMediatorHttpClientTest {
     assertEquals(0, groupWithMatches.getMatchingUsers().size());
   }
 
+  private String createNewRandomUser() {
+    return UUID.randomUUID().toString()+"@serendipify.me";
+  }
 }

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" tests="6" skipped="2" failures="2" errors="0" timestamp="2016-02-12T03:43:34" hostname="janka" time="14.206">
+<testsuite name="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" tests="6" skipped="2" failures="2" errors="0" timestamp="2016-02-12T04:07:56" hostname="janka" time="14.539">
   <properties/>
   <testcase name="testThatRetrieveAnalyticsWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testThatCreateGroupWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="9.912"/>
+  <testcase name="testThatCreateGroupWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="1.872"/>
   <testcase name="testThatRetrievePreferencesWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="testThatPreferencesWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="1.852">
+  <testcase name="testThatPreferencesWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="11.162">
     <failure message="me.serendipify.SerendipifyException: Failed to retrieve preferences. Error was FAILED" type="me.serendipify.SerendipifyException">me.serendipify.SerendipifyException: Failed to retrieve preferences. Error was FAILED
 	at me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl.retrievePreferences(SerendipifyMediatorHttpClientImpl.java:126)
 	at me.serendipify.httpclient.SerendipifyMediatorHttpClientTest.testThatPreferencesWorks(SerendipifyMediatorHttpClientTest.java:94)
@@ -58,11 +58,11 @@
 	at java.lang.Thread.run(Thread.java:745)
 </failure>
   </testcase>
-  <testcase name="testThatAddingAUserWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="1.14"/>
-  <testcase name="testThatUserWorkflowWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="1.294">
-    <failure message="me.serendipify.SerendipifyException: com.google.gson.stream.MalformedJsonException: Unterminated object near OK&quot;,  &quot;matches&quot;:&quot;{&quot;serendipify&quot;:[]}&quot;}" type="me.serendipify.SerendipifyException">me.serendipify.SerendipifyException: com.google.gson.stream.MalformedJsonException: Unterminated object near OK&quot;,  &quot;matches&quot;:&quot;{&quot;serendipify&quot;:[]}&quot;}
-	at me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl.retrieveMatchingUsers(SerendipifyMediatorHttpClientImpl.java:176)
-	at me.serendipify.httpclient.SerendipifyMediatorHttpClientTest.testThatUserWorkflowWorks(SerendipifyMediatorHttpClientTest.java:114)
+  <testcase name="testThatAddingAUserWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="0.823"/>
+  <testcase name="testThatUserWorkflowWorks" classname="me.serendipify.httpclient.SerendipifyMediatorHttpClientTest" time="0.677">
+    <failure message="me.serendipify.SerendipifyException: Failed to retrieve preferences. Error was FAILED" type="me.serendipify.SerendipifyException">me.serendipify.SerendipifyException: Failed to retrieve preferences. Error was FAILED
+	at me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl.retrievePreferences(SerendipifyMediatorHttpClientImpl.java:126)
+	at me.serendipify.httpclient.SerendipifyMediatorHttpClientTest.testThatUserWorkflowWorks(SerendipifyMediatorHttpClientTest.java:111)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -107,60 +107,42 @@
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated object near OK&quot;,  &quot;matches&quot;:&quot;{&quot;serendipify&quot;:[]}&quot;}
-	at com.google.gson.Streams.parse(Streams.java:51)
-	at com.google.gson.Gson.fromJson(Gson.java:497)
-	at com.google.gson.Gson.fromJson(Gson.java:467)
-	at com.google.gson.Gson.fromJson(Gson.java:417)
-	at com.google.gson.Gson.fromJson(Gson.java:389)
-	at me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl.retrieveMatchingUsers(SerendipifyMediatorHttpClientImpl.java:169)
-	... 45 more
-Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object near OK&quot;,  &quot;matches&quot;:&quot;{&quot;serendipify&quot;:[]}&quot;}
-	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1111)
-	at com.google.gson.stream.JsonReader.nextInObject(JsonReader.java:737)
-	at com.google.gson.stream.JsonReader.quickPeek(JsonReader.java:379)
-	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:332)
-	at com.google.gson.Streams.parseRecursive(Streams.java:82)
-	at com.google.gson.Streams.parse(Streams.java:40)
-	... 50 more
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[38 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=685109bd-a926-43db-835a-0a053a1bf10e&groupOwnerEmail=test@test.com
-8677 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=685109bd-a926-43db-835a-0a053a1bf10e&groupSession=ce8f37f7-6a14-4cff-a72a-f118f759214a"}
-8696 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientTest - New session id is ce8f37f7-6a14-4cff-a72a-f118f759214a
-9697 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=685109bd-a926-43db-835a-0a053a1bf10e&groupOwnerEmail=test@test.com
-9911 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"FAILED",  "errorMessage":"Group name already in use"}
-9911 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientTest - Exepected failure: Group name already in use
-9913 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&groupOwnerEmail=test@test.com
-10184 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&groupSession=62d19b6f-8f23-447e-a9e2-2c0b4d50d340"}
-10185 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&groupSession=62d19b6f-8f23-447e-a9e2-2c0b4d50d340&userContact=test2@test.com
-11295 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&groupSession=3039aaba-4386-40f6-adda-cd76e5ca19de"}
-11303 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?setPrefsForGroup=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&userSession=3039aaba-4386-40f6-adda-cd76e5ca19de&prefList=serendipify
-11655 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "setPrefsForGroup":"OK",  "prefs":"http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&userSession=3039aaba-4386-40f6-adda-cd76e5ca19de"}
-11656 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - OK
-11657 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&userSession=3039aaba-4386-40f6-adda-cd76e5ca19de
-11657 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=afb3945f-4c6c-4e8f-a014-5be64fdedf0a&userSession=3039aaba-4386-40f6-adda-cd76e5ca19de
-11761 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "getPrefsForGroup":"FAILED",  "errorMessage":"Not a member of groupafb3945f-4c6c-4e8f-a014-5be64fdedf0a"}
-11763 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - me.serendipify.httpclient.GetPrefsResult@34fbbeff
-11766 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=ad451867-7a0c-4c9d-9d55-20b438eb8a29&groupOwnerEmail=test@test.com
-12088 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=ad451867-7a0c-4c9d-9d55-20b438eb8a29&groupSession=cfaf1b8c-cf6c-4175-a074-13a2fc7d5598"}
-12089 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=ad451867-7a0c-4c9d-9d55-20b438eb8a29&groupSession=cfaf1b8c-cf6c-4175-a074-13a2fc7d5598&userContact=test2@test.com
-12482 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=ad451867-7a0c-4c9d-9d55-20b438eb8a29&groupSession=59b13196-f66b-4a69-bcd3-5d8ac6bce9aa"}
-12483 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=ad451867-7a0c-4c9d-9d55-20b438eb8a29&groupSession=cfaf1b8c-cf6c-4175-a074-13a2fc7d5598&userContact=test2@test.com
-12905 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=ad451867-7a0c-4c9d-9d55-20b438eb8a29&groupSession=6c211f38-8314-4a2b-84fa-47a5d2eb9bc4"}
-12906 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&groupOwnerEmail=test@test.com
-13187 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&groupSession=5f64dcb0-f8a2-4a41-a56d-bc78b7122e79"}
-13187 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&groupSession=5f64dcb0-f8a2-4a41-a56d-bc78b7122e79&userContact=test2@test.com
-13593 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&groupSession=aa815cd8-2711-4956-b3b4-251266163f31"}
-13593 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?setPrefsForGroup=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&userSession=aa815cd8-2711-4956-b3b4-251266163f31&prefList=serendipify
-13839 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "setPrefsForGroup":"OK",  "prefs":"http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&userSession=aa815cd8-2711-4956-b3b4-251266163f31"}
-13839 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - OK
-13840 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&userSession=aa815cd8-2711-4956-b3b4-251266163f31
-13840 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&userSession=aa815cd8-2711-4956-b3b4-251266163f31
-14072 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "getPrefsForGroup":"OK ", "prefs": ["serendipify"]}
-14075 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - me.serendipify.httpclient.GetPrefsResult@62db806b
-14075 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=27b99cff-6215-47a4-baf3-2360e8d21627&userSession=aa815cd8-2711-4956-b3b4-251266163f31
-14198 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "getMatchesForGroup":"OK",  "matches":"{"serendipify":[]}"}
+  <system-err><![CDATA[38 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=1e99d243-fabd-4b86-b697-c14ae11c10d6&groupOwnerEmail=test@test.com
+764 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=1e99d243-fabd-4b86-b697-c14ae11c10d6&groupSession=39b55123-b117-4d17-a9cb-b41d7cfa4ae6"}
+783 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientTest - New session id is 39b55123-b117-4d17-a9cb-b41d7cfa4ae6
+1783 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=1e99d243-fabd-4b86-b697-c14ae11c10d6&groupOwnerEmail=test@test.com
+1871 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"FAILED",  "errorMessage":"Group name already in use"}
+1871 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientTest - Exepected failure: Group name already in use
+1872 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&groupOwnerEmail=test@test.com
+2167 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&groupSession=9b71a640-ec61-4a58-ba91-245bd14bad5d"}
+2167 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&groupSession=9b71a640-ec61-4a58-ba91-245bd14bad5d&userContact=test2@test.com
+2609 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&groupSession=0ef0e928-943f-4698-884d-0d3f5da52a7b"}
+2615 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?setPrefsForGroup=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&userSession=0ef0e928-943f-4698-884d-0d3f5da52a7b&prefList=serendipify
+12940 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "setPrefsForGroup":"OK",  "prefs":"http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&userSession=0ef0e928-943f-4698-884d-0d3f5da52a7b"}
+12941 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - OK
+12941 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&userSession=0ef0e928-943f-4698-884d-0d3f5da52a7b
+12941 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=d73bab66-2446-4b6b-a244-4b13ec907a60&userSession=0ef0e928-943f-4698-884d-0d3f5da52a7b
+13030 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "getPrefsForGroup":"FAILED",  "errorMessage":"Not a member of groupd73bab66-2446-4b6b-a244-4b13ec907a60"}
+13032 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - me.serendipify.httpclient.GetPrefsResult@56188111
+13035 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=9b6dc154-0a61-42d4-bae8-c7f68ef82aed&groupOwnerEmail=test@test.com
+13220 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=9b6dc154-0a61-42d4-bae8-c7f68ef82aed&groupSession=7b0c662c-7942-44f9-aeb4-2c6b9f783328"}
+13220 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=9b6dc154-0a61-42d4-bae8-c7f68ef82aed&groupSession=7b0c662c-7942-44f9-aeb4-2c6b9f783328&userContact=test2@test.com
+13611 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=9b6dc154-0a61-42d4-bae8-c7f68ef82aed&groupSession=3c805815-287c-43b1-84f0-a446327cb40e"}
+13612 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=9b6dc154-0a61-42d4-bae8-c7f68ef82aed&groupSession=7b0c662c-7942-44f9-aeb4-2c6b9f783328&userContact=test2@test.com
+13857 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=9b6dc154-0a61-42d4-bae8-c7f68ef82aed&groupSession=c068b094-9e70-4fe9-b98f-8d6c58002463"}
+13858 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?createNewGroup=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&groupOwnerEmail=test@test.com
+14022 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "createNewGroup":"OK",  "groupName":"http://api-dot-serendipify-me.appspot.com/api/group?getGroupAnalytics=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&groupSession=b67773e4-8125-4e21-8025-9fa0c270c1f5"}
+14023 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/group?addUser=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&groupSession=b67773e4-8125-4e21-8025-9fa0c270c1f5&userContact=test2@test.com
+14237 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "addUser":"OK ", "userName":"http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&groupSession=afa52a95-cd5b-4f3d-a26c-2cf27d313d42"}
+14238 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?setPrefsForGroup=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&userSession=afa52a95-cd5b-4f3d-a26c-2cf27d313d42&prefList=serendipify
+14458 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "setPrefsForGroup":"OK",  "prefs":"http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&userSession=afa52a95-cd5b-4f3d-a26c-2cf27d313d42"}
+14458 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - OK
+14458 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - http://api-dot-serendipify-me.appspot.com/api/user?getMatchesForGroup=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&userSession=afa52a95-cd5b-4f3d-a26c-2cf27d313d42
+14458 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - Executing: http://api-dot-serendipify-me.appspot.com/api/user?getPrefsForGroup=&groupName=9caa62a8-53d5-434f-91b5-9dd9999fab56&userSession=afa52a95-cd5b-4f3d-a26c-2cf27d313d42
+14533 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - { "getPrefsForGroup":"FAILED",  "errorMessage":"Not a member of group9caa62a8-53d5-434f-91b5-9dd9999fab56"}
+14534 [Test worker] INFO me.serendipify.httpclient.SerendipifyMediatorHttpClientImpl - me.serendipify.httpclient.GetPrefsResult@51f36893
 ]]></system-err>
 </testsuite>
