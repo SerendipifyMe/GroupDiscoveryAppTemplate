@@ -1,7 +1,7 @@
 
-### Serendipify.Me  -  Group Match API for Mobile (Android) apps
+## Serendipify.Me  -  Group Match API for Mobile (Android) apps
 
-#### Introduction
+### Introduction
 
 [Serendipify.Me](http://serendipify.me) is a simple service developed to facilitate private interests matching is transient groups.
 
@@ -11,7 +11,7 @@ WE make available an API (detailed below) that implements the for group search, 
 
 In this repository, we also provide you with a skeleton "Template App" to show you how to use the API. Presumably you identify relevant code, add and customize it for your app, and you will be ready to give your users this matching functionality. 
 
-#### Details and Implementation Example
+### HTTP API Details
 
 ![SerendipifyMe API Diagram](https://github.com/tibisp/GroupDiscoveryAppTemplate/raw/master/img/SerendipifyMe-API-Diagram.png)
 
@@ -46,7 +46,10 @@ The Serendipify.Me API consists of:
  - initiate a connection request using one of the matching user's connection strings 
    - **REQ:** http://serendipify.me/api/user?initiateContact=&groupName=GROUPNAME&userGroupSession=USERSESSION&targetContact=MATCHUSERCONNSTRING1
     - **RESP:** { "initiateContact":"OK",  "Message":"Contact Request Sent Successfully for common interest "pref-1". You get max 3 messages sent per day." }
- 
+
+### Implementation Example 
+The code in this repository is a java library for an example Android template group discovery application.
+Go into the folders to read more details.
 
 ## The Developer Console
 To assist you with developing your mobile application against our API, we make available a development console:
