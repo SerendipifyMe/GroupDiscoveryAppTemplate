@@ -89,7 +89,7 @@ public class SerendipifyMediatorHttpClientTest {
     // set preferences
     Set<String> newPreferences = new HashSet<>();
     newPreferences.add("serendipify");
-    userGroup = service.savePreferences(userGroup,newPreferences);
+    userGroup = service.savePreferences(userGroup, newPreferences);
     // get preferences
     Group preferences = service.retrievePreferences(userGroup);
     assertEquals("serendipify", preferences.getPreferences().iterator().next());
@@ -108,14 +108,14 @@ public class SerendipifyMediatorHttpClientTest {
     // set preferences
     Set<String> newPreferences = new HashSet<>();
     newPreferences.add("serendipify");
-    userGroup = service.savePreferences(userGroup,newPreferences);
+    userGroup = service.savePreferences(userGroup, newPreferences);
     Thread.sleep(1000);
 
     User newUser2 = User.Builder.getInstance().email(createNewRandomUser()).build();
     userGroup = service.addUser(userGroup, newUser2);
     Thread.sleep(1000);
     // set preferences
-    userGroup = service.savePreferences(userGroup,newPreferences);
+    userGroup = service.savePreferences(userGroup, newPreferences);
     Thread.sleep(1000);
 
     // get preferences
@@ -127,7 +127,33 @@ public class SerendipifyMediatorHttpClientTest {
     assertEquals(1, groupWithMatches.getMatchingUsers().size());
   }
 
+  @Test
+  @Ignore("Test the example on the README.md. Executed sporadically because the group name is not unique.")
+  public void testReadmeExample() throws Exception {
+    // Use the service to create a group named ConnectDotMe and assign an admin to it
+    Group group = service.createGroup("ConnectDotMe", admin);
+    // Now this group has a group session: group.getSession()
+
+    // Lets add another user to the group
+    User johnDoe = User.Builder.getInstance().email("JohnDoe@gmail.com").build();
+    Group jdGroup = service.addUser(group, johnDoe);
+
+    // Set the preferences for the user in this group
+    Set<String> newPreferences = new HashSet<>();
+    newPreferences.add("fishing");
+    jdGroup = service.savePreferences(jdGroup, newPreferences);
+
+    // To retrieve preferences set for a groupName
+    // This is probably happening sometimes much later after
+    jdGroup = service.retrievePreferences(jdGroup);
+    // jdGroup.getPreferences() now has the preferences
+
+    // Retrieve matching users, hopefully there are others who set the same preferences
+    jdGroup = service.retrieveMatchingUsers(jdGroup);
+    // jdGroup.getMatchingUsers() now has the users by match
+  }
+
   private String createNewRandomUser() {
-    return UUID.randomUUID().toString()+"@serendipify.me";
+    return UUID.randomUUID().toString() + "@serendipify.me";
   }
 }
