@@ -16,6 +16,10 @@ public class User {
 
     private String email;
 
+    private Builder() {
+      // private, use getInstance() instead
+    }
+
     public static Builder getInstance() {
       return new Builder();
     }

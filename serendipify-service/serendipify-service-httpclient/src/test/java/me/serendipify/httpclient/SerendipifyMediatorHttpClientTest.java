@@ -28,7 +28,7 @@ public class SerendipifyMediatorHttpClientTest {
   @Before
   public void setUp() throws Exception {
     this.service = new SerendipifyMediatorHttpClientImpl("http://serendipify.me/api/");
-    this.admin = new User.Builder().email(GROUP_ADMIN_EMAIL).build();
+    this.admin = User.Builder.getInstance().email(GROUP_ADMIN_EMAIL).build();
   }
 
   @Test
@@ -51,7 +51,7 @@ public class SerendipifyMediatorHttpClientTest {
   public void testThatAddingAUserWorksAndIsIndempotent() throws Exception {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
-    User newUser = new User.Builder().email(createNewRandomUser()).build();
+    User newUser = User.Builder.getInstance().email(createNewRandomUser()).build();
     service.addUser(group, newUser);
 
     //FIXME: This should not fail, adding the same user should work
@@ -62,7 +62,7 @@ public class SerendipifyMediatorHttpClientTest {
   public void testThatRetrieveAnalyticsWorks() throws Exception {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
-    User newUser = new User.Builder().email(createNewRandomUser()).build();
+    User newUser = User.Builder.getInstance().email(createNewRandomUser()).build();
     service.addUser(group, newUser);
     group = service.retrieveGroupAnalytics(group);
     Thread.sleep(1000);
@@ -84,7 +84,7 @@ public class SerendipifyMediatorHttpClientTest {
     String randomGroup = UUID.randomUUID().toString();
     Group group = service.createGroup(randomGroup, admin);
     // add user to it
-    User newUser = new User.Builder().email(createNewRandomUser()).build();
+    User newUser = User.Builder.getInstance().email(createNewRandomUser()).build();
     Group userGroup = service.addUser(group, newUser);
     // set preferences
     Set<String> newPreferences = new HashSet<>();
@@ -102,7 +102,7 @@ public class SerendipifyMediatorHttpClientTest {
     Group group = service.createGroup(randomGroup, admin);
     // add 2 users to it
 
-    User newUser = new User.Builder().email(createNewRandomUser()).build();
+    User newUser = User.Builder.getInstance().email(createNewRandomUser()).build();
     Group userGroup = service.addUser(group, newUser);
     Thread.sleep(1000);
     // set preferences
@@ -111,7 +111,7 @@ public class SerendipifyMediatorHttpClientTest {
     userGroup = service.savePreferences(userGroup,newPreferences);
     Thread.sleep(1000);
 
-    User newUser2 = new User.Builder().email(createNewRandomUser()).build();
+    User newUser2 = User.Builder.getInstance().email(createNewRandomUser()).build();
     userGroup = service.addUser(userGroup, newUser2);
     Thread.sleep(1000);
     // set preferences
