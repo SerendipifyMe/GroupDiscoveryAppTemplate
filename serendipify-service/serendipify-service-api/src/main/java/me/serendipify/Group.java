@@ -1,7 +1,6 @@
 package me.serendipify;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Group {
 
@@ -9,10 +8,10 @@ public class Group {
   private final String session;
   private final Boolean owned;
   private final Set<String> preferences;
-  private final Set<User> matchingUsers;
+  private final Map<String, Set<User>> matchingUsers;
   private final Integer userCount;
 
-  private Group(String name, String session, Boolean owned, Set<String> preferences, Set<User> matchingUsers,
+  private Group(String name, String session, Boolean owned, Set<String> preferences, Map<String, Set<User>> matchingUsers,
                 Integer userCount) {
     this.name = name;
     this.session = session;
@@ -68,10 +67,10 @@ public class Group {
   }
 
   /**
-   * Matching users
+   * Matching users by preference
    * @return
    */
-  public Set<User> getMatchingUsers() {
+  public Map<String, Set<User>> getMatchingUsers() {
     return matchingUsers;
   }
 
@@ -81,11 +80,16 @@ public class Group {
     private String session;
     private Boolean owned;
     private Set<String> preferences;
-    private Set<User> matchingUsers;
+    // A set of preference and users matched
+    private Map<String, Set<User>> matchingUsers;
     private Integer userCount;
 
     public static final Builder getInstance() {
       return new Builder();
+    }
+
+    private Builder() {
+      // private, use contstructor instead
     }
 
     public Builder fromGroup(Group group) {
@@ -126,16 +130,22 @@ public class Group {
       return this;
     }
 
-    public Builder matchingUsers(Set<User> matchingUsers) {
+    public Builder matchingUsers(Map<String, Set<User>> matchingUsers) {
       this.matchingUsers = matchingUsers;
       return this;
     }
 
-    public Builder addMatchingUser(User user) {
+    public Builder addMatchingUser(String preference, User user) {
       if (this.matchingUsers == null) {
-        this.matchingUsers = new HashSet<>();
+        this.matchingUsers = new HashMap<>();
       }
-      this.matchingUsers.add(user);
+      if (this.matchingUsers.containsKey(preference)) {
+        this.matchingUsers.get(preference).add(user);
+      } else {
+        Set<User> users = new HashSet<>();
+        users.add(user);
+        this.matchingUsers.put(preference, users);
+      }
       return this;
     }
 
@@ -145,6 +155,9 @@ public class Group {
     }
 
     public Group build() {
+      if (matchingUsers == null) {
+        matchingUsers = new HashMap<>();
+      }
       return new Group(name, session, owned, preferences, matchingUsers, userCount);
     }
   }

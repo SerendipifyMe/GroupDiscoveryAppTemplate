@@ -19,6 +19,7 @@ import static me.serendipify.httpclient.HttpConstants.USER_PREFS_SET;
 import static me.serendipify.httpclient.HttpConstants.USER_SESSION;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
@@ -55,7 +56,7 @@ public class SerendipifyMediatorHttpClientImpl implements SerendipifyMediator {
       if (result.isError()) {
         throw new SerendipifyException(result.getErrorMessage());
       }
-      return new Group.Builder().name(group).owned(Boolean.TRUE).session(result.getSessionID()).build();
+      return Group.Builder.getInstance().name(group).owned(Boolean.TRUE).session(result.getSessionID()).build();
     }
     catch (IOException e) {
       String error = String.format("Failed to create the new group %s", group);
@@ -79,7 +80,7 @@ public class SerendipifyMediatorHttpClientImpl implements SerendipifyMediator {
       if (result.isError()) {
         throw new SerendipifyException("Failed to add user");
       }
-      return new Group.Builder().fromGroup(group).session(result.getUserSession()).build();
+      return Group.Builder.getInstance().fromGroup(group).session(result.getUserSession()).build();
     }
     catch (IOException e) {
       String error = String.format("Failed to add user %s to group %s", newUser.getEmail(), group);
@@ -99,7 +100,7 @@ public class SerendipifyMediatorHttpClientImpl implements SerendipifyMediator {
       if (groupAnalyticsResult.isError(groupAnalyticsResult.getGetGroupAnalytics())) {
         throw new SerendipifyException("Failed to retrieve analytics. Error was " + groupAnalyticsResult.getGetGroupAnalytics());
       }
-      return new Group.Builder().fromGroup(group).userCount(groupAnalyticsResult.getUserCount()).build();
+      return Group.Builder.getInstance().fromGroup(group).userCount(groupAnalyticsResult.getUserCount()).build();
     }
     catch (Exception e) {
       throw new SerendipifyException(e.getMessage());
@@ -119,7 +120,7 @@ public class SerendipifyMediatorHttpClientImpl implements SerendipifyMediator {
       if (prefsResult.isError()) {
         throw new SerendipifyException("Failed to retrieve preferences. Error was " + prefsResult.getGetPrefsForGroup());
       }
-      return new Group.Builder().fromGroup(group).preferences(prefsResult.getPrefs()).build();
+      return Group.Builder.getInstance().fromGroup(group).preferences(prefsResult.getPrefs()).build();
     }
     catch (Exception e) {
       throw new SerendipifyException(e.getMessage());
@@ -159,22 +160,22 @@ public class SerendipifyMediatorHttpClientImpl implements SerendipifyMediator {
     try {
       String response = executeGET(request);
       Gson gson = new GsonBuilder().create();
-//      SetPrefsResult setPrefsResult = gson.fromJson(response, SetPrefsResult.class);
-//      LOGGER.info(setPrefsResult.getSetPrefsForGroup());
-//      if (!setPrefsResult.isError()) {
-//        LOGGER.info(setPrefsResult.getPrefs());
-//      }
-
-      Object obj = gson.fromJson(response, Object.class);
-      if (obj instanceof Map) {
-        Map mapResults = (Map) obj;
-        LOGGER.info(mapResults.toString());
+      RetrieveMatchingUsers matchingUsers = gson.fromJson(response, RetrieveMatchingUsers.class);
+      LOGGER.info(matchingUsers.getGetMatchesForGroup());
+      if (!matchingUsers.isError()) {
+        LOGGER.info(matchingUsers.getMatches().toString());
       }
+      Group.Builder builder = Group.Builder.getInstance().fromGroup(group);
+      for (Map.Entry<String, ArrayList<String>> preference : matchingUsers.getMatches().entrySet()) {
+        for (String userEmail : preference.getValue()) {
+          builder.addMatchingUser(preference.getKey(), User.Builder.getInstance().email(userEmail).build());
+        }
+      }
+      return builder.build();
     }
     catch (Exception e) {
       throw new SerendipifyException(e.getMessage(), e);
     }
-    return group;
   }
 
   private String executeGET(String request) throws IOException {
