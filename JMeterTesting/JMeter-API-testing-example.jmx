@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan for Users with Emails" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
@@ -18,10 +18,20 @@
             <stringProp name="Argument.value">api-test-grp-${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="user1contact" elementType="Argument">
+            <stringProp name="Argument.name">user1contact</stringProp>
+            <stringProp name="Argument.value">userOne-${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ)}-email@example.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="user2contact" elementType="Argument">
+            <stringProp name="Argument.name">user2contact</stringProp>
+            <stringProp name="Argument.value">userTwo-${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ)}-email@example.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Defaults - api.appspot" enabled="false">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Site - Serendipify.Me" enabled="false">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="groupName" elementType="HTTPArgument">
@@ -33,7 +43,7 @@
             </elementProp>
           </collectionProp>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">api-dot-serendipify-me.appspot.com</stringProp>
+        <stringProp name="HTTPSampler.domain">serendipify.me</stringProp>
         <stringProp name="HTTPSampler.port"></stringProp>
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -43,7 +53,7 @@
         <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Defaults - local" enabled="true">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Site - local" enabled="true">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="groupName" elementType="HTTPArgument">
@@ -135,12 +145,12 @@
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop 2" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="User One" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">2</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Group API - add user" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Group API - add user One" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="addUser" elementType="HTTPArgument">
@@ -152,7 +162,7 @@
                 </elementProp>
                 <elementProp name="userContact" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">api-test-user@example.com</stringProp>
+                  <stringProp name="Argument.value">${user1contact}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">userContact</stringProp>
@@ -177,7 +187,7 @@
           <hashTree>
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">resultingSessionID</stringProp>
+              <stringProp name="RegexExtractor.refname">userOneKey</stringProp>
               <stringProp name="RegexExtractor.regex">([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12})</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
@@ -190,7 +200,7 @@
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User - getPrefs" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User One - getPrefs" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="getPrefsForGroup" elementType="HTTPArgument">
@@ -202,7 +212,7 @@
                 </elementProp>
                 <elementProp name="userSession" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${resultingSessionID}</stringProp>
+                  <stringProp name="Argument.value">${userOneKey}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">userSession</stringProp>
@@ -225,7 +235,7 @@
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User - setPrefs" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User One - setPrefs" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="setPrefsForGroup" elementType="HTTPArgument">
@@ -244,42 +254,7 @@
                 </elementProp>
                 <elementProp name="userSession" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${resultingSessionID}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">userSession</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/api/user</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User - getMatches" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="getMatchesForGroup" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value"></stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">getMatchesForGroup</stringProp>
-                </elementProp>
-                <elementProp name="userSession" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${resultingSessionID}</stringProp>
+                  <stringProp name="Argument.value">${userOneKey}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">userSession</stringProp>
@@ -331,6 +306,174 @@
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="User Two" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </LoopController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Group API - add user Two" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="addUser" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">addUser</stringProp>
+                </elementProp>
+                <elementProp name="userContact" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${user2contact}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">userContact</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/api/group</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">userTwoKey</stringProp>
+              <stringProp name="RegexExtractor.regex">([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12})</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="RandomDelay" enabled="true">
+              <stringProp name="ConstantTimer.delay">2000</stringProp>
+              <stringProp name="RandomTimer.range">500.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User Two - getPrefs " enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="getPrefsForGroup" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">getPrefsForGroup</stringProp>
+                </elementProp>
+                <elementProp name="userSession" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${userTwoKey}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">userSession</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/api/user</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User  Two- setPrefs" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="setPrefsForGroup" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">setPrefsForGroup</stringProp>
+                </elementProp>
+                <elementProp name="prefList" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">pref-1,pref-2,pref-3</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">prefList</stringProp>
+                </elementProp>
+                <elementProp name="userSession" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${userTwoKey}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">userSession</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/api/user</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User Two - getMatches" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="getMatchesForGroup" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">getMatchesForGroup</stringProp>
+                </elementProp>
+                <elementProp name="userSession" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${userTwoKey}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">userSession</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/api/user</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
