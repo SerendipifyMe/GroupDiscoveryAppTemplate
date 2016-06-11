@@ -11,6 +11,10 @@ WE make available an API (detailed below) that implements the for group search, 
 
 In this repository, we also provide you with a skeleton "Template App" to show you how to use the API. Presumably you identify relevant code, add and customize it for your app, and you will be ready to give your users this matching functionality. 
 
+
+![SerendipifyMe API](http://www.slideshare.net/slideshow/embed_code/key/ktQDBxGFHGBwGj)
+
+
 ### HTTP API Details
 
 ![SerendipifyMe API Diagram](https://github.com/tibisp/GroupDiscoveryAppTemplate/raw/master/img/SerendipifyMe-API-Diagram.png)
