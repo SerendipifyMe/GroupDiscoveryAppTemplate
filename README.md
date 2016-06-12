@@ -7,11 +7,13 @@
 
 We make available an API (detailed below) that implements the for group search, matching, and people discovery. Serendipify.Me is effectively the *Match.com* for your user base.
 
-In this repository, we also provide you with a skeleton "Template App" to show you how to use the API. Presumably you identify relevant code, add and customize it for your app, and you will be ready to give your users this matching functionality. 
+In this repository, we also provide you with:
+- a wrapper library in the serendipify-service folder
+- a JMeter automated testing scripts to get you started
+- a skeleton "AndroidApp" (at a very early stage)
 
 
 Here's a SlideShare presentation of the whole system: http://www.slideshare.net/slideshow/embed_code/key/ktQDBxGFHGBwGj
-
 
 ### HTTP API Details
 
